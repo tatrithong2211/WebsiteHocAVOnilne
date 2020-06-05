@@ -54,9 +54,9 @@ namespace WebsiteHocAVOnline
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "258535651881098",
+               appSecret: "6d1619ae01686ea228f6cba56cbf6d55");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

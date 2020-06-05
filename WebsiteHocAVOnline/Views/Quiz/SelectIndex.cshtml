@@ -1,0 +1,83 @@
+﻿@model WebsiteHocAVOnline.Models.Category
+
+@{
+    ViewBag.Title = "SelectIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SelectIndex</h2>
+
+
+<style>
+    .bai-giang {
+        display: none;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .test-online {
+        padding: 2rem 0;
+        width: 100%;
+        height: 500px;
+    }
+</style>
+
+<div class="test-online">
+    <div class="container">
+        <div class="row">
+            <div class="test-online__time">
+
+                <div class="title-content text-center">
+                    <p>
+                        <strong>TOEIC </strong>(viết tắt của <strong>Test of English for International Communication</strong> – Bài
+                        kiểm tra tiếng Anh giao tiếp quốc tế) là một chứng chỉ được sử dụng phổ biến nhằm đánh giá trình độ sử dụng
+                        tiếng Anh trong môi trường giao tiếp quốc tế.
+                        Ở Việt Nam những năm gần đây, chứng chỉ TOEIC nổi lên như một tiêu chuẩn phổ biến để đánh giá trình độ thông
+                        thạo tiếng Anh của người lao động được nhiều doanh nghiệp, tổ chức lựa chọn.
+                        Ngoài ra TOEIC còn là chuẩn đầu ra tiếng Anh của nhiều trường đại học cho sinh viên khi tốt nghiệp
+                    </p>
+                    <p>
+                        Để thuận tiện cho các bạn ôn luyện và thi lấy chứng chỉ TOEIC, TOEIC24.VN cung cấp các bài thi thử TOEIC
+                        online miễn phí. Với các đề thi TOEIC được biên soạn bài bản tương tự các đề thi thực tế giúp mọi
+                        người dễ dàng làm quen và đánh giá trình độ hiện tại. Từ đó có kế hoạch luyện thi TOEIC phù hợp
+                    </p>
+                    <p>
+                        Đề thi thử TOEIC được thực hiện theo format mới, có chấm điểm và giải thích chi tiết giúp bạn đánh giá chính
+                        xác điểm TOEIC hiện tại đặc biệt website dễ sử dụng và hoàn toàn miễn phí phù hợp với tất cả mọi người
+                    </p>
+                </div>
+            </div>
+            <div class="text-online__test  w-100">
+                <h3 class="pb-5 pt-4" style="text-align:center; text-transform: uppercase ;">Trắc nghiệm Toeic miễn phí</h3>
+                <div class="form-content">
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-4 text-center m-auto">
+                                @using (Html.BeginForm())
+                                {
+
+                                    <div class="form-horizontal d-flex">
+
+                                        @Html.DropDownList("catGet", ViewBag.List as SelectList, "---Lựa chọn loại test---", htmlAttributes: new { @class = "form-control" })
+
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Bắt đầu thi" class="btn btn-success" />
+                                            </div>
+                                        </div>
+
+                                    </div>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

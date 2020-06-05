@@ -1,0 +1,18 @@
+﻿@model List<WebsiteHocAVOnline.Models.Category>
+
+
+
+<div class="tab w-100 mb-2">
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/Home/Lesson/@item.ID_Category">@item.TênCategory</a></li>
+        }
+        <li class="tablinks">
+            @Html.ActionLink("Thi", "ConfirmUser", "Quiz")
+        </li>
+    </ul>
+
+</div>
+

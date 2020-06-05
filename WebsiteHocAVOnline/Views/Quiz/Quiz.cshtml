@@ -1,0 +1,92 @@
+﻿@model WebsiteHocAVOnline.Models.CauHoi
+
+@{
+    ViewBag.Title = "Quiz";
+    Layout = "~/Views/Shared/_LayoutQuiz.cshtml";
+}
+
+<h2>Quiz</h2>
+<style>
+
+    .bai-giang {
+        display: none;
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .question-list {
+        height: 463px;
+    }
+</style>
+
+
+
+<div class="test-page">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="question-list w-100">
+
+                <div class="container">
+
+                    <h1 class="pt-5" style="text-align: center;">Phần thi trắc nghiệm, vui lòng chọn đáp án!</h1>
+
+                    <div class="row question-list-row">
+
+                        <div class="col-md-6">
+
+                            @using (Html.BeginForm())
+                            {
+
+                                <div class="answer">
+
+                                    <p>
+                                        <b> @Html.DisplayFor(model => model.CauHoi1, new { htmlAttributes = new { @class = "form-control" } })</b>
+                                    </p>
+
+                                    <ul class="answer-list">
+
+                                        <li>
+                                            <b> @Html.RadioButtonFor(x => x.A, new { @class = "form-control" }) A: &nbsp;@Model.A</b>
+                                        </li>
+
+                                        <li>
+                                            <b> @Html.RadioButtonFor(x => x.B, new { @class = "form-control" }) B: &nbsp; @Model.B</b>
+                                        </li>
+
+                                        <li>
+                                            <b> @Html.RadioButtonFor(x => x.C, new { @class = "form-control" }) C: &nbsp; @Model.C</b>
+                                        </li>
+
+                                        <li>
+                                            <b> @Html.RadioButtonFor(x => x.D, new { @class = "form-control" }) D: &nbsp; @Model.D</b>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+
+                                <div class="col-span-12 finish-all d-block text-right">
+
+                                    <input type="submit" class="btn btn-success" value="Next" />
+
+                                </div> @* *@}
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

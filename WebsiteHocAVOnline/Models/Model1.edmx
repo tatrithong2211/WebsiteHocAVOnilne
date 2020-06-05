@@ -48,7 +48,7 @@
           <Key>
             <PropertyRef Name="IDTaiKhoan" />
           </Key>
-          <Property Name="IDTaiKhoan" Type="int" Nullable="false" />
+          <Property Name="IDTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="100" />
           <Property Name="Hoten" Type="nvarchar" MaxLength="50" />
@@ -175,7 +175,7 @@
           <Key>
             <PropertyRef Name="IDTaiKhoan" />
           </Key>
-          <Property Name="IDTaiKhoan" Type="Int32" Nullable="false" />
+          <Property Name="IDTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -228,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBThiTrucTuyenEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBThiTrucTuyenEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="CauHois" EntityType="Self.CauHoi" />
@@ -253,7 +253,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBThiTrucTuyenModelStoreContainer" CdmEntityContainer="DBThiTrucTuyenEntities2">
+        <EntityContainerMapping StorageEntityContainer="DBThiTrucTuyenModelStoreContainer" CdmEntityContainer="DBThiTrucTuyenEntities1">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="DBThiTrucTuyenModel.Admin">
               <MappingFragment StoreEntitySet="Admin">

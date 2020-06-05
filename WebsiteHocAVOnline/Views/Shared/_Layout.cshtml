@@ -1,826 +1,392 @@
-﻿
-@{
-    Layout = null;
+﻿@using WebsiteHocAVOnline.Models;
+@{ 
+    List<TaiKhoan> ListUer = ViewBag.ListUser;
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Online Test</title>
-
-    <!-- Required meta tags -->
+  <head>
+    <title>Website Học Anh Văn Online</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/Assets/Client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="~/Assets/Client/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/animate.css">
+    
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="~/Assets/Client/css/flaticon.css">
+    <link rel="stylesheet" href="~/Assets/Client/css/style.css">
+  </head>
+  <body>
 
-    <!-- ElegantFonts CSS -->
-    <link rel="stylesheet" href="~/Assets/Client/css/elegant-fonts.css">
+      <div class="container-fluid px-md-5  pt-4 pt-md-5">
+          <div class="row justify-content-between">
+              <div class="col-md-8 order-md-last">
+                  <div class="row">
+                      <div class="col-md-6 text-center">
+                          <a class="navbar-brand" href="index.html">Online <span>Test</span> <small>Website Học Anh Văn Online</small></a>
+                      </div>
+                      <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
+                          <form action="#" class="searchform order-lg-last">
+                              <div class="form-group d-flex">
+                                  <input type="text" class="form-control pl-3" placeholder="Search">
+                                  <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 d-flex">
+                  <div class="social-media">
+                      <p class="mb-0 d-flex">
+                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+          <div class="container-fluid">
 
-    <!-- themify-icons CSS -->
-    <link rel="stylesheet" href="~/Assets/Client/css/themify-icons.css">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="fa fa-bars"></span> Menu
+              </button>
+              <div class="collapse navbar-collapse" id="ftco-nav">
+                  <ul class="navbar-nav m-auto">
+                      <li class="nav-item active"><a href="@Url.Action("Index", "Home")" class="nav-link">Trang Chủ</a></li>
+                      <li class="nav-item"><a href="@Url.Action("ConfirmUser", "Quiz")" class="nav-link">Thi</a></li>
+                      <li class="nav-item"><a href="@Url.Action("Index", "Document")" class="nav-link">Tài Liệu</a></li>
+                      <li class="nav-item"><a href="@Url.Action("Introduce", "Home")" class="nav-link">Giới Thiệu</a></li>
+                  </ul>
 
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="~/Assets/Client/css/swiper.min.css">
+                  <div class="form-inline my-2 my-lg-0 mr-2">
+                      <span>Tài khoản: @(HttpContext.Current.Session["TAI KHOAN"] == null ? "" : ListUer.FirstOrDefault(m => m.IDTaiKhoan == Convert.ToInt32(HttpContext.Current.Session["TAI KHOAN"])).TenDangNhap)</span>
+                  </div>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="~/Assets/Client/style.css">
-</head>
-<body>
-    @RenderBody()
-    <div class="hero-content">
-        <header class="site-header">
+                  <div class="form-inline my-2 my-lg-0">
+                      <a class="btn btn-success my-2 my-sm-0" href="/Account/@(HttpContext.Current.Session["TAI KHOAN"] == null ? "Login" : "Logout")">@(HttpContext.Current.Session["TAI KHOAN"] == null ? "Đăng nhập" : "Đăng xuất")</a>
+                  </div>
+              </div>
+          </div>
+      </nav>
+      <!-- END nav -->
+
+      <section class="hero-wrap" style="background-image: url('../../Assets/Client/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+              <div class="row no-gutters slider-text align-items-center">
+                  <div class="col-md-8 ftco-animate d-flex align-items-end">
+                      <div class="text w-100">
+                          <h1 class="mb-4">Luyện Thi Anh Văn</h1>
+                          <p class="mb-4">Học anh văn miễn phí cho mọi người.</p>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <div class="bai-giang" id="baigiang">
+          <div class="container">
+              <div class="row">
+
+                  @{ Html.RenderAction("MenuLesson", "Home");}
+
+                  @RenderBody()
+
+              </div>
+
+          </div>
+
+      </div>
 
 
-            <div class="nav-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-9 col-lg-3">
-                            <div class="site-branding">
-                                <h1 class="site-title"><a href="index.html" rel="home">OnLine<span>TestAV</span></a></h1>
-                            </div><!-- .site-branding -->
-                        </div><!-- .col -->
 
-                        <div class="col-3 col-lg-9 main_nav">
-                            <nav class="site-navigation flex justify-content-end align-items-center">
-                                <ul class="flex flex-column flex-lg-row  main_nav_list">
 
-                                    <li class="current-item"><a href="index.html">Trang Chủ</a></li>
-                                    <li><a href="#">Tài Liệu</a></li>
-                                    <li><a href="#">Thi</a></li>
-                                    <li><a href="#">Thêm</a></li>
-                                    <li><a href="#">Tài Khoản</a></li>
-                                </ul>
 
-                                <div class="hamburger-menu d-lg-none">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div><!-- .hamburger-menu -->
+      <!-- <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <span class="subheading">Price &amp; Plans</span>
+            <h2>Affordable Packages</h2>
+          </div>
+        </div>
+            <div class="row">
+                <div class="col-md-4 ftco-animate d-flex">
+              <div class="block-7 w-100">
+                <div class="text-center">
+                    <span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mo</sub></span>
+                    <span class="excerpt d-block">For Adults</span>
+                    <ul class="pricing-text mb-5">
+                      <li><span class="fa fa-check mr-2"></span>Individual Counseling</li>
+                      <li><span class="fa fa-check mr-2"></span>Couples Therapy</li>
+                      <li><span class="fa fa-check mr-2"></span>Family Therapy</li>
+                    </ul>
 
-                                <div class="header-bar-cart">
-                                    <a href="#" class="flex justify-content-center align-items-center"><span aria-hidden="true" class="icon_bag_alt"></span></a>
-                                </div><!-- .header-bar-search -->
-                            </nav><!-- .site-navigation -->
-                        </div><!-- .col -->
-                    </div><!-- .row -->
-                </div><!-- .container -->
-            </div><!-- .nav-bar -->
-        </header><!-- .site-header -->
+                    <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 ftco-animate d-flex">
+              <div class="block-7 w-100">
+                <div class="text-center">
+                    <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mo</sub></span>
+                    <span class="excerpt d-block">For Children</span>
+                    <ul class="pricing-text mb-5">
+                      <li><span class="fa fa-check mr-2"></span>Counseling for Children</li>
+                      <li><span class="fa fa-check mr-2"></span>Behavioral Management</li>
+                      <li><span class="fa fa-check mr-2"></span>Educational Counseling</li>
+                    </ul>
 
-        <div class="hero-content-overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="hero-content-wrap flex flex-column justify-content-center align-items-start">
-                            <header class="entry-header">
-                                <h4>Bắt đầu với khóa học trực tuyến</h4>
-                                <h1>
-                                    Luyện Thi Anh Văn
-                                    <br />
-                                    Miễn Phí Cho Mọi Người
-                                </h1>
-                            </header><!-- .entry-header -->
+                    <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 ftco-animate d-flex">
+              <div class="block-7 w-100">
+                <div class="text-center">
+                    <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mo</sub></span>
+                    <span class="excerpt d-block">For Business</span>
+                    <ul class="pricing-text mb-5">
+                      <li><span class="fa fa-check mr-2"></span>Consultancy Services</li>
+                      <li><span class="fa fa-check mr-2"></span>Employee Counseling</li>
+                      <li><span class="fa fa-check mr-2"></span>Psychological Assessment</li>
+                    </ul>
 
-                            <div class="entry-content">
-                                <p>Một bài kiểm tra trắc nghiệm bao gồm 02 phần: phần thi Listening (nghe hiểu) gồm 100 câu, thực hiện trong 45 phút và phần thi Reading (đọc hiểu) cũng gồm 100 câu nhưng thực hiện trong 75 phút. Tổng thời gian làm bài là 120 phút (2 tiếng).</p>
-                            </div><!-- .entry-content -->
-
-                            <footer class="entry-footer read-more">
-                                <a href="#">đọc tiếp</a>
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .hero-content-wrap -->
-                    </div><!-- .col -->
-                </div><!-- .row -->
-            </div><!-- .container -->
-        </div><!-- .hero-content-hero-content-overlay -->
-    </div><!-- .hero-content -->
-
-    <div class="icon-boxes">
-        <div class="container-fluid">
-            <div class="flex flex-wrap align-items-stretch">
-                <div class="icon-box">
-                    <div class="icon">
-                        <span class="ti-exchange-vertical"></span>
-                    </div><!-- .icon -->
-
-                    <header class="entry-header">
-                        <h2 class="entry-title">Cập Nhật Liên Tục</h2>
-                    </header><!-- .entry-header -->
-
-                    <div class="entry-content">
-                        <p> luôn được cập nhật liên tục và thường xuyên</p>
-                    </div><!-- .entry-content -->
-
-                    <footer class="entry-footer read-more">
-                        <a href="#">đọc tiếp<i class="fa fa-long-arrow-right"></i></a>
-                    </footer><!-- .entry-footer -->
-                </div><!-- .icon-box -->
-
-                <div class="icon-box">
-                    <div class="icon">
-                        <span class="ti-star"></span>
-                    </div><!-- .icon -->
-
-                    <header class="entry-header">
-                        <h2 class="entry-title">Thuận Tiện, Nhanh Chóng</h2>
-                    </header><!-- .entry-header -->
-
-                    <div class="entry-content">
-                        <p>Nhận kết quả nhanh chóng</p>
-                    </div><!-- .entry-content -->
-
-                    <footer class="entry-footer read-more">
-                        <a href="#">đọc tiếp<i class="fa fa-long-arrow-right"></i></a>
-                    </footer><!-- .entry-footer -->
-                </div><!-- .icon-box -->
-
-                <div class="icon-box">
-                    <div class="icon">
-                        <span class="ti-arrow-up"></span>
-                    </div><!-- .icon -->
-
-                    <header class="entry-header">
-                        <h2 class="entry-title">Nâng Cao Kỹ Năng ngoại Ngữ</h2>
-                    </header><!-- .entry-header -->
-
-                    <div class="entry-content">
-                        <p>Rèn luyện 2 kỹ năng Reading và Listening nhanh nhất</p>
-                    </div><!-- .entry-content -->
-
-                    <footer class="entry-footer read-more">
-                        <a href="#">đọc tiếp<i class="fa fa-long-arrow-right"></i></a>
-                    </footer><!-- .entry-footer -->
-                </div><!-- .icon-box -->
-
-                <div class="icon-box">
-                    <div class="icon">
-                        <span class="ti-book"></span>
-                    </div><!-- .icon -->
-
-                    <header class="entry-header">
-                        <h2 class="entry-title">Đề thi có đáp án và giải thích</h2>
-                    </header><!-- .entry-header -->
-
-                    <div class="entry-content">
-                        <p>Sau khi làm bài bạn có thể kiểm tra đáp án, giải thích chi tiết từng đáp án</p>
-                    </div><!-- .entry-content -->
-
-                    <footer class="entry-footer read-more">
-                        <a href="#">đọc tiếp <i class="fa fa-long-arrow-right"></i></a>
-                    </footer><!-- .entry-footer -->
-                </div><!-- .icon-box -->
-            </div><!-- .row -->
-        </div><!-- .container-fluid -->
-    </div><!-- .icon-boxes -->
-
-    <section class="featured-courses horizontal-column courses-wrap">
+                    <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section> -->
+      <!-- <section class="ftco-appointment ftco-section img" style="background-image: url(images/bg_2.jpg);">
+            <div class="overlay"></div>
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <header class="heading flex justify-content-between align-items-center">
-                        <h2 class="entry-title">Featured Courses</h2>
-
-                        <a class="btn mt-4 mt-sm-0" href="#">view all</a>
-                    </header><!-- .heading -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-lg-6">
-                    <div class="course-content flex flex-wrap justify-content-between align-content-lg-stretch">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/1.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <div class="course-ratings flex align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-
-                                <h2 class="entry-title"><a href="#">The Complete Android Developer Course</a></h2>
-
-                                <div class="entry-meta flex flex-wrap align-items-center">
-                                    <div class="course-author"><a href="#">Ms. Lara Croft </a></div>
-
-                                    <div class="course-date">July 21, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    <span class="free-cost">Free</span>
-                                </div><!-- .course-cost -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-lg-6">
-                    <div class="course-content flex flex-wrap justify-content-between align-content-lg-stretch">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/2.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <div class="course-ratings flex align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-
-                                <h2 class="entry-title"><a href="#">Learn Photoshop, Web Design & Profitable</a></h2>
-
-                                <div class="entry-meta flex flex-wrap align-items-center">
-                                    <div class="course-author"><a href="#">Mr. John Wick</a></div>
-
-                                    <div class="course-date">Aug 21, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    $32 <span class="price-drop">$59</span>
-                                </div><!-- .course-cost -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </section><!-- .courses-wrap -->
-
-    <section class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-lg-6 align-content-lg-stretch">
-                    <header class="heading">
-                        <h2 class="entry-title">About Ezuca</h2>
-
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
-                    </header><!-- .heading -->
-
-                    <div class="entry-content ezuca-stats">
-                        <div class="stats-wrap flex flex-wrap justify-content-lg-between">
-                            <div class="stats-count">
-                                50<span>M+</span>
-                                <p>STUDENTS LEARNING</p>
-                            </div><!-- .stats-count -->
-
-                            <div class="stats-count">
-                                30<span>K+</span>
-                                <p>ACTIVE COURSES</p>
-                            </div><!-- .stats-count -->
-
-                            <div class="stats-count">
-                                340<span>M+</span>
-                                <p>INSTRUCTORS ONLINE</p>
-                            </div><!-- .stats-count -->
-
-                            <div class="stats-count">
-                                20<span>+</span>
-                                <p>Country Reached</p>
-                            </div><!-- .stats-count -->
-                        </div><!-- .stats-wrap -->
-                    </div><!-- .ezuca-stats -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-lg-6 flex align-content-center mt-5 mt-lg-0">
-                    <div class="ezuca-video position-relative">
-                        <div class="video-play-btn position-absolute">
-                            <img src="images/video-icon.png" alt="Video Play">
-                        </div><!-- .video-play-btn -->
-
-                        <img src="images/video-screenshot.png" alt="">
-                    </div><!-- .ezuca-video -->
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </section><!-- .about-section -->
-
-    <section class="testimonial-section">
-        <!-- Swiper -->
-        <div class="swiper-container testimonial-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="container">
+                <div class="col-md-6 half ftco-animate">
+                    <h2 class="mb-4">Send a Message &amp; Get in touch!</h2>
+                    <form action="#" class="appointment">
                         <div class="row">
-                            <div class="col-12 col-lg-6 order-2 order-lg-1 flex align-items-center mt-5 mt-lg-0">
-                                <figure class="user-avatar">
-                                    <img src="images/user-1.jpg" alt="">
-                                </figure><!-- .user-avatar -->
-                            </div><!-- .col -->
-
-                            <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
-                                <div class="entry-content">
-                                    <p>Together as teachers, students and universities we can help make this education available for everyone.</p>
-                                </div><!-- .entry-content -->
-
-                                <div class="entry-footer">
-                                    <h3 class="testimonial-user">Russell Stephens - <span>University in UK</span></h3>
-                                </div><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .swiper-slide -->
-
-                <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6 order-2 order-lg-1 flex align-items-center mt-5 mt-lg-0">
-                                <figure class="user-avatar">
-                                    <img src="images/user-2.jpg" alt="">
-                                </figure><!-- .user-avatar -->
-                            </div><!-- .col -->
-
-                            <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
-                                <div class="entry-content">
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div><!-- .entry-content -->
-
-                                <div class="entry-footer">
-                                    <h3 class="testimonial-user">Robert Stephens - <span>University in Oxford</span></h3>
-                                </div><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .swiper-slide -->
-
-                <div class="swiper-slide">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-6 flex order-2 order-lg-1 align-items-center mt-5 mt-lg-0">
-                                <figure class="user-avatar">
-                                    <img src="images/user-3.jpg" alt="">
-                                </figure><!-- .user-avatar -->
-                            </div><!-- .col -->
-
-                            <div class="col-12 col-lg-6 order-1 order-lg-2 content-wrap h-100">
-                                <div class="entry-content">
-                                    <p>Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                </div><!-- .entry-content -->
-
-                                <div class="entry-footer">
-                                    <h3 class="testimonial-user">James Stephens - <span>University in Cambridge</span></h3>
-                                </div><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .swiper-slide -->
-            </div><!-- .swiper-wrapper -->
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-6 mt-5 mt-lg-0">
-                        <div class="swiper-pagination position-relative flex justify-content-center align-items-center"></div>
-                    </div><!-- .col -->
-                </div><!-- .row -->
-            </div><!-- .container -->
-        </div><!-- .testimonial-slider -->
-    </section><!-- .testimonial-section -->
-
-    <section class="featured-courses vertical-column courses-wrap">
-        <div class="container">
-            <div class="row mx-m-25">
-                <div class="col-12 px-25">
-                    <header class="heading flex flex-wrap justify-content-between align-items-center">
-                        <h2 class="entry-title">Featured Courses</h2>
-
-                        <nav class="courses-menu mt-3 mt-lg-0">
-                            <ul class="flex flex-wrap justify-content-md-end align-items-center">
-                                <li class="active"><a href="#">All</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Web Development</a></li>
-                                <li><a href="#">Photography</a></li>
-                            </ul>
-                        </nav><!-- .courses-menu -->
-                    </header><!-- .heading -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-lg-4 px-25">
-                    <div class="course-content">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/1.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><a href="#">The Complete Android Developer Course</a></h2>
-
-                                <div class="entry-meta flex align-items-center">
-                                    <div class="course-author"><a href="#">Ms. Lara Croft </a></div>
-
-                                    <div class="course-date">July 21, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    $45 <span class="price-drop">$68</span>
-                                </div><!-- .course-cost -->
-
-                                <div class="course-ratings flex justify-content-end align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-lg-4 px-25">
-                    <div class="course-content">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/2.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><a href="#">The Ultimate Drawing Course Beginner to Advanced</a></h2>
-
-                                <div class="entry-meta flex align-items-center">
-                                    <div class="course-author"><a href="#">Michelle Golden</a></div>
-
-                                    <div class="course-date">Mar 14, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    <span class="free-cost">Free</span>
-                                </div><!-- .price-drop -->
-
-                                <div class="course-ratings flex justify-content-end align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-lg-4 px-25">
-                    <div class="course-content">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/3.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><a href="#">The Complete Digital Marketing Course</a></h2>
-
-                                <div class="entry-meta flex align-items-center">
-                                    <div class="course-author"><a href="#">Ms. Lucius</a></div>
-
-                                    <div class="course-date">Dec 18, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    $55 <span class="price-drop">$78</span>
-                                </div><!-- .course-cost -->
-
-                                <div class="course-ratings flex justify-content-end align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-lg-4 px-25">
-                    <div class="course-content">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/4.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><a href="#">The Unreal Engine Developer Course</a></h2>
-
-                                <div class="entry-meta flex align-items-center">
-                                    <div class="course-author"><a href="#">Mr. John Wick</a></div>
-
-                                    <div class="course-date">Otc 17, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    <span class="free-cost">Free</span>
-                                </div><!-- .course-cost -->
-
-                                <div class="course-ratings flex justify-content-end align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-lg-4 px-25">
-                    <div class="course-content">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/5.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><a href="#">Progressive Web Apps (PWA) - The Complete Guide</a></h2>
-
-                                <div class="entry-meta flex align-items-center">
-                                    <div class="course-author"><a href="#">Mr. Tom Redder</a></div>
-
-                                    <div class="course-date">Sep 14, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    $38 <span class="price-drop">$48</span>
-                                </div><!-- .course-cost -->
-
-                                <div class="course-ratings flex justify-content-end align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 col-md-6 col-lg-4 px-25">
-                    <div class="course-content">
-                        <figure class="course-thumbnail">
-                            <a href="#"><img src="images/6.jpg" alt=""></a>
-                        </figure><!-- .course-thumbnail -->
-
-                        <div class="course-content-wrap">
-                            <header class="entry-header">
-                                <h2 class="entry-title"><a href="#">Cryptocurrency Investment Course 2018</a></h2>
-
-                                <div class="entry-meta flex align-items-center">
-                                    <div class="course-author"><a href="#">Russell Stephens</a></div>
-
-                                    <div class="course-date">Nov 06, 2018</div>
-                                </div><!-- .course-date -->
-                            </header><!-- .entry-header -->
-
-                            <footer class="entry-footer flex justify-content-between align-items-center">
-                                <div class="course-cost">
-                                    <span class="free-cost">Free</span>
-                                </div><!-- .course-cost -->
-
-                                <div class="course-ratings flex justify-content-end align-items-center">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star-o"></span>
-
-                                    <span class="course-ratings-count">(4 votes)</span>
-                                </div><!-- .course-ratings -->
-                            </footer><!-- .entry-footer -->
-                        </div><!-- .course-content-wrap -->
-                    </div><!-- .course-content -->
-                </div><!-- .col -->
-
-                <div class="col-12 px-25 flex justify-content-center">
-                    <a class="btn" href="#">view all courses</a>
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </section><!-- .courses-wrap -->
-
-    <section class="home-gallery">
-        <div class="gallery-wrap flex flex-wrap">
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/a.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/b.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid2x2">
-                <a href="#"><img src="images/c.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/d.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/e.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid2x1">
-                <a href="#"><img src="images/g.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid2x1">
-                <a href="#"><img src="images/h.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/i.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid2x2 ">
-                <a href="#"><img src="images/j.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/k.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/l.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid2x1">
-                <a href="#"><img src="images/m.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid3x1">
-                <a href="#"><img src="images/n.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-
-            <div class="gallery-grid gallery-grid1x1">
-                <a href="#"><img src="images/o.jpg" alt=""></a>
-            </div><!-- .gallery-grid -->
-        </div><!-- .gallery-wrap -->
-    </section><!-- .home-gallery -->
-
-    <div class="clients-logo">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 flex flex-wrap justify-content-center justify-content-lg-between align-items-center">
-                    <div class="logo-wrap">
-                        <img src="images/logo-1.png" alt="">
-                    </div><!-- .logo-wrap -->
-
-                    <div class="logo-wrap">
-                        <img src="images/logo-2.png" alt="">
-                    </div><!-- .logo-wrap -->
-
-                    <div class="logo-wrap">
-                        <img src="images/logo-3.png" alt="">
-                    </div><!-- .logo-wrap -->
-
-                    <div class="logo-wrap">
-                        <img src="images/logo-4.png" alt="">
-                    </div><!-- .logo-wrap -->
-
-                    <div class="logo-wrap">
-                        <img src="images/logo-5.png" alt="">
-                    </div><!-- .logo-wrap -->
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </div><!-- .clients-logo -->
-
-    <footer class="site-footer">
-        <div class="footer-widgets">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="foot-about">
-                            <a class="foot-logo" href="#"><img src="images/foot-logo.png" alt=""></a>
-
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum. </p>
-
-                            <p class="footer-copyright">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div><!-- .foot-about -->
-                    </div><!-- .col -->
-
-                    <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
-                        <div class="foot-contact">
-                            <h2>Contact Us</h2>
-
-                            <ul>
-                                <li>Email: info.deertcreative@gmail.com</li>
-                                <li>Phone: (+88) 111 555 666</li>
-                                <li>Address: 40 Baria Sreet 133/2 NewYork City, US</li>
-                            </ul>
-                        </div><!-- .foot-contact -->
-                    </div><!-- .col -->
-
-                    <div class="col-12 col-md-6 col-lg-3 mt-5 mt-lg-0">
-                        <div class="quick-links flex flex-wrap">
-                            <h2 class="w-100">Quick Links</h2>
-
-                            <ul class="w-50">
-                                <li><a href="#">About </a></li>
-                                <li><a href="#">Terms of Use </a></li>
-                                <li><a href="#">Privacy Policy </a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
-
-                            <ul class="w-50">
-                                <li><a href="#">Documentation</a></li>
-                                <li><a href="#">Forums</a></li>
-                                <li><a href="#">Language Packs</a></li>
-                                <li><a href="#">Release Status</a></li>
-                            </ul>
-                        </div><!-- .quick-links -->
-                    </div><!-- .col -->
-
-                    <div class="col-12 col-md-6 col-lg-3 mt-5 mt-lg-0">
-                        <div class="follow-us">
-                            <h2>Follow Us</h2>
-
-                            <ul class="follow-us flex flex-wrap align-items-center">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div><!-- .quick-links -->
-                    </div><!-- .col -->
-                </div><!-- .row -->
-            </div><!-- .container -->
-        </div><!-- .footer-widgets -->
-
-        <div class="footer-bar">
-            <div class="container">
-                <div class="row flex-wrap justify-content-center justify-content-lg-between align-items-center">
-                    <div class="col-12 col-lg-6">
-                        <div class="download-apps flex flex-wrap justify-content-center justify-content-lg-start align-items-center">
-                            <a href="#"><img src="images/app-store.png" alt=""></a>
-                            <a href="#"><img src="images/play-store.png" alt=""></a>
-                        </div><!-- .download-apps -->
-
-                    </div>
-
-                    <div class="col-12 col-lg-6 mt-4 mt-lg-0">
-                        <div class="footer-bar-nav">
-                            <ul class="flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
-                                <li><a href="#">DPA</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div><!-- .footer-bar-nav -->
-                    </div><!-- .col-12 -->
-                </div><!-- .row -->
-            </div><!-- .container -->
-        </div><!-- .footer-bar -->
-    </footer><!-- .site-footer -->
-
-    <script type='text/javascript' src='~/Assets/Client/js/jquery.js'></script>
-    <script type='text/javascript' src='~/Assets/Client/js/swiper.min.js'></script>
-    <script type='text/javascript' src='~/Assets/Client/js/masonry.pkgd.min.js'></script>
-    <script type='text/javascript' src='~/Assets/Client/js/jquery.collapsible.min.js'></script>
-    <script type='text/javascript' src='~/Assets/Client/js/custom.js'></script>
-
-</body>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                    <div class="form-field">
+                                <div class="select-wrap">
+                          <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                          <select name="" id="" class="form-control">
+                            <option value="">Services</option>
+                            <option value="">Relation Problem</option>
+                            <option value="">Couple Counseling</option>
+                            <option value="">Depression Treatment</option>
+                            <option value="">Family Problem</option>
+                            <option value="">Personal Problem</option>
+                            <option value="">Business Problem</option>
+                          </select>
+                        </div>
+                          </div>
+                                </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                          <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                        </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                          <input type="submit" value="Send message" class="btn btn-primary py-3 px-4">
+                        </div>
+                                </div>
+                        </div>
+              </form>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+      <section class="ftco-section">
+          <div class="container">
+              <div class="row justify-content-center mb-5">
+                  <div class="col-md-7 heading-section text-center ftco-animate">
+                      <span class="subheading">Blog</span>
+                      <h2>Recent Blog</h2>
+                  </div>
+              </div>
+              <div class="row d-flex">
+                  <div class="col-md-4 d-flex ftco-animate">
+                      <div class="blog-entry justify-content-end">
+                          <div class="text text-center">
+                              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_1.jpg');">
+                              </a>
+                              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
+                                  <div>
+                                      <span class="day">02</span>
+                                      <span class="mos">May</span>
+                                      <span class="yr">2020</span>
+                                  </div>
+                              </div>
+                              <h3 class="heading mb-3"><a href="#">New Friends With Books</a></h3>
+                              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 d-flex ftco-animate">
+                      <div class="blog-entry justify-content-end">
+                          <div class="text text-center">
+                              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_2.jpg');">
+                              </a>
+                              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
+                                  <div>
+                                      <span class="day">02</span>
+                                      <span class="mos">May</span>
+                                      <span class="yr">2020</span>
+                                  </div>
+                              </div>
+                              <h3 class="heading mb-3"><a href="#">New Friends With Books</a></h3>
+                              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 d-flex ftco-animate">
+                      <div class="blog-entry justify-content-end">
+                          <div class="text text-center">
+                              <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_3.jpg');">
+                              </a>
+                              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
+                                  <div>
+                                      <span class="day">02</span>
+                                      <span class="mos">May</span>
+                                      <span class="yr">2020</span>
+                                  </div>
+                              </div>
+                              <h3 class="heading mb-3"><a href="#">New Friends With Books</a></h3>
+                              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <footer class="ftco-footer">
+          <div class="container">
+              <div class="row mb-5">
+                  <div class="col-sm-12 col-md">
+                      <div class="ftco-footer-widget mb-4">
+                          <h2 class="ftco-heading-2 logo"><a href="#">Connect</a></h2>
+                          <p>Far far away, behind the word mountains, far from the countries.</p>
+                          <ul class="ftco-footer-social list-unstyled mt-2">
+                              <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                              <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                              <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md">
+                      <div class="ftco-footer-widget mb-4 ml-md-4">
+                          <h2 class="ftco-heading-2">Extra Links</h2>
+                          <ul class="list-unstyled">
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Affiliate Program</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Business Services</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Education Services</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Gift Cards</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md">
+                      <div class="ftco-footer-widget mb-4 ml-md-4">
+                          <h2 class="ftco-heading-2">Legal</h2>
+                          <ul class="list-unstyled">
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Join us</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Blog</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Privacy &amp; Policy</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md">
+                      <div class="ftco-footer-widget mb-4">
+                          <h2 class="ftco-heading-2">Company</h2>
+                          <ul class="list-unstyled">
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About Us</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Blog</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+                              <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Careers</a></li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md">
+                      <div class="ftco-footer-widget mb-4">
+                          <h2 class="ftco-heading-2">Have a Questions?</h2>
+                          <div class="block-23 mb-3">
+                              <ul>
+                                  <li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                                  <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                                  <li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="container-fluid px-0 py-5 bg-black">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-12">
+
+                          <p class="mb-0" style="color: rgba(255,255,255,.5);">
+                              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                              Copyright &copy;
+                              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </footer>
+
+
+
+      <!-- loader -->
+      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+      <script src="~/Assets/Client/js/jquery.min.js"></script>
+      <script src="~/Assets/Client/js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="~/Assets/Client/js/popper.min.js"></script>
+      <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+      <script src="~/Assets/Client/js/jquery.easing.1.3.js"></script>
+      <script src="~/Assets/Client/js/jquery.waypoints.min.js"></script>
+      <script src="~/Assets/Client/js/jquery.stellar.min.js"></script>
+      <script src="~/Assets/Client/js/owl.carousel.min.js"></script>
+      <script src="~/Assets/Client/js/jquery.magnific-popup.min.js"></script>
+      <script src="~/Assets/Client/js/jquery.animateNumber.min.js"></script>
+      <script src="~/Assets/Client/js/scrollax.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+      <script src="~/Assets/Client/js/google-map.js"></script>
+      <script src="~/Assets/Client/js/main.js"></script>
+
+  </body>
 </html>

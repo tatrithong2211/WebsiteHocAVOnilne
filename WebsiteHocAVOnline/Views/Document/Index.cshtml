@@ -1,0 +1,68 @@
+﻿@using WebsiteHocAVOnline.Models
+@model List<TaiLieu>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tailieu mx-auto container">
+
+    <div class="container-fluid">
+
+        <h2 style="text-align: center;" class="mb-2">Tài liệu luyện thi TOEIC cấp tốc</h2>
+
+        <div class="row">
+
+            <div class="tailieu-content">
+
+                <div>
+
+                    Trang này nhằm cung cấp tài liệu cho lớp luyện thi cấp tốc của thầy Duy nhưng bất kỳ ai cũng có thể sử dụng.
+
+                    Đây là tài liệu đầy đủ cho bộ Economy TOEIC và ETS TOEIC. Đây là những bộ đề TOEIC mới nhất và sát nhất với đề thi TOEIC thật hiện nay, cực kỳ hữu ích cho những bạn đang luyện thi TOEIC cấp tốc.
+
+                    Lợi ích khi tải tài liệu tại đây:
+
+                    <ul>
+                        <li>Dễ đọc hơn với file PDF chất lượng cao, rõ nét</li>
+                        <li>Tập trung hơn khi học vì không chèn hình ảnh và chữ quảng cáo (watermark)</li>
+                        <li>Tiện tra cứu vì có thể tìm kiếm chữ trong sách</li>
+                        <li>Có thể sao chép chữ trong sách ra được</li>
+                        <li>Dễ dàng di chuyển đến mỗi đề mục vì đã đánh dấu trang (bookmark)</li>
+                        <li>Tải xuống cực nhanh vì kích thước nhỏ và link trực tiếp, không phải chờ</li>
+                    </ul>
+
+                </div>
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-12 book--content mb-5">
+                        <div class="bool--content__item mt-5">
+                            <div class="container">
+                                <div class="row">
+
+                                    <div class="col-12 col-md-4 text-center">
+                                        <img src="@Url.Content("~/Assets/Dcimg/img/" + item.Image)" alt="">
+                                    </div>
+
+                                    <div class="col-12 col-md-8">
+
+                                        <h3>@item.TenTaiLieu</h3>
+                                        <p>Tải sách nhanh: <a href="@item.DownLoad"> Tải nhanh </a></p>
+                                        <p>Tải sách chất lượng cao<a href="@item.DownLoad"> Tải file chất lượng cao </a></p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

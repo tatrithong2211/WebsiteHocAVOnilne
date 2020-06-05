@@ -1,0 +1,39 @@
+﻿@using WebsiteHocAVOnline.Models
+@model List<Learning>
+
+@{
+    ViewBag.Title = "Lesson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lesson</h2>
+<style>
+    .chi-tiet-bai-giang {
+        display: none;
+    }
+</style>
+
+@{ int i = 0;
+    <div class="container mb-5">
+
+        <div class="mb-4">
+
+            <h3 style="text-align:center;">@ViewBag.name</h3>
+
+            <hr />
+
+        </div>
+
+        <div style="text-align:justify; column-count:3; font-size:14px;" class="mb-6">
+
+            <ul class="mx-auto">
+                @foreach (var item in Model)
+                {
+                    i++;
+    <li class="mb-2 ml-2"><a href="@Url.Action("DetailLesson", "Home", new {id = item.ID_BaiHoc})">Bài @i: &nbsp;@item.TenBaiHoc</a></li>}
+            </ul>
+
+        </div>
+
+    </div> 
+ }

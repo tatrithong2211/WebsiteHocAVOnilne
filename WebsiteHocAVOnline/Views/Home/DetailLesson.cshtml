@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "DetaiLesson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<WebsiteHocAVOnline.Models.Learning> List = ViewBag.List;
+    List<WebsiteHocAVOnline.Models.Category> ListCategory = ViewBag.ListCategory;
+
+}
+
+@using WebsiteHocAVOnline.Models
+@model Learning
+@{ int i = 0;}
+<style>
+
+    .banner {
+        display: none;
+    }
+</style>
+<div class="chi-tiet-bai-giang">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="chi-tiet-bai-giang--left">
+                    <div class="chi-tiet-bai-giang--left__video">
+                        <iframe width="1381" height="522" src="https://www.youtube.com/embed/@Model.Link"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="chi-tiet-bai-giang--left__title mb-2">
+                        <h1>@Model.TenBaiHoc</h1>
+                    </div>
+                    <div class="chi-tiet-bai-giang--left__content">
+                        @Html.Raw(Model.MoTa)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chi-tiet-bai-giang--right">
+                    <div class="chi-tiet-bai-giang--right__scrollbar">
+                        <h1>@ListCategory.FirstOrDefault(m => m.ID_Category == Model.ID_Category).TênCategory</h1>
+                        <ul class="nav nav-tabs tabs-left">
+                            @foreach (var lessonBar in List.Where(m => m.ID_Category == Model.ID_Category))
+                            {
+                                i++;
+                                <li id="" rel="" class="@(lessonBar.ID_BaiHoc == Model.ID_BaiHoc ? "active" : "")">
+                                    <a href="@Url.Action("DetaiLesson","Home", new {@id=lessonBar.ID_BaiHoc})">Bài @i:&nbsp;@lessonBar.TenBaiHoc</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

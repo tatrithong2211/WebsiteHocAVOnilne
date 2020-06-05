@@ -15,6 +15,7 @@ namespace WebsiteHocAVOnline.Controllers
         public ActionResult Index()
         {
             return View(db.TaiLieux.ToList());
+
         }
     }
 }
