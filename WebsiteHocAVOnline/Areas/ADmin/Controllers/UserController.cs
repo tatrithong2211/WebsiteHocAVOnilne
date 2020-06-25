@@ -34,5 +34,23 @@ namespace WebsiteHocAVOnline.Areas.ADmin.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult EditUser(int id)
+        {
+            return View(db.TaiKhoans.Where(Model => Model.IDTaiKhoan == id).FirstOrDefault());
+        }
+
+
+        public ActionResult EditUser(TaiKhoan adGet)
+        {
+            var adList = db.TaiKhoans.Where(Model => Model.IDTaiKhoan == adGet.IDTaiKhoan).FirstOrDefault();
+
+            adList.TenDangNhap = adGet.TenDangNhap;
+
+            adList.MatKhau = adGet.MatKhau;
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

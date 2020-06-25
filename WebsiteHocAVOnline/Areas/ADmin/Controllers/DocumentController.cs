@@ -92,5 +92,41 @@ namespace WebsiteHocAVOnline.Areas.ADmin.Controllers
             return path;
 
         }
+
+
+        [HttpGet]
+        public ActionResult EditDocument(int id)
+        {
+
+            var lst = db.TaiLieux.Where(model => model.IDTaiLieu == id).FirstOrDefault();
+
+            return View(lst);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditDocument(TaiLieu leGet)
+        {
+
+            try
+            {
+
+                var leList = db.TaiLieux.Where(model => model.IDTaiLieu == leGet.IDTaiLieu).FirstOrDefault();
+
+                leList.IDTaiLieu = leGet.IDTaiLieu;
+
+                leList.DownLoad= leGet.DownLoad;
+
+                leList.Image = leGet.Image;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ID_Category, "ID_Category", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ID_Category", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ID_Category", ViewBag.List as SelectList, "---Lựa chọn bài học---", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ID_Category, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thêm" class="btn btn-primary btn-sm btn-block" />
+                <input type="submit" value="Sửa" class="btn btn-primary btn-sm btn-block" />
             </div>
         </div>
     </div>

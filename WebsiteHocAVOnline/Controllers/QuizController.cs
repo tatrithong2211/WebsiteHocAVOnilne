@@ -15,7 +15,7 @@ namespace WebsiteHocAVOnline.Controllers
 
         public ActionResult ConfirmUser()
         {
-            if (Session["TaiKhoan"] != null)
+            if (Session["Tai Khoan"] != null)
             {
                 return RedirectToAction("SelectIndex");
             }

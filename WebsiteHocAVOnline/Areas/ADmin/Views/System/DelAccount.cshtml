@@ -1,0 +1,46 @@
+﻿@model WebsiteHocAVOnline.Models.Admin
+
+@{
+    ViewBag.Title = "DelAccount";
+    Layout = "~/Areas/ADmin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@section header{
+    Bạn có đồng ý muốn xóa?
+}
+
+@{
+    var item = Model;
+}
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenTK)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenTK)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-primary btn-danger btn-block" />
+                @Html.ActionLink("Trở về", "Index")
+            </div>
+        }
+    </div>

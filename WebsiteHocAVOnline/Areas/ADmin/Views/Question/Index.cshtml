@@ -5,54 +5,57 @@
     Layout = "~/Areas/ADmin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
+    <div class="container-fluid">
+        <h1 class="mt-4">Bảng</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Danh Sách Câu Hỏi</li>
+        </ol>
 
-    <h4 class="m-0 font-weight-bold text-primary">Danh Sách Câu Hỏi</h4>
+        <a class="btn btn-success mb-4" href="@Url.Action("AddQuestion", "Question")">Thêm</a>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>STT</th>
+                    <th>Câu Hỏi</th>
+                    <th class="text-center">Quản lý</th>
+                </tr>
 
-    <table class="table table-bordered">
-        <a href="/ADmin/Question/AddQuestion" class="btn btn-danger btn-xs pull-right"><b>+</b> Thêm mới</a>
-        <thead>
-            <tr>
-                <th>STT</th>
-                <th>Câu Hỏi</th>
-                <th class="text-center">Quản lý</th>
-            </tr>
+            </thead>
 
-        </thead>
+            @{
+                int i = 0;
 
-        @{
-            int i = 0;
-
-            foreach (var item in Model)
-            {
-                i++;
-                using (Html.BeginForm("DelQuestion", "Question", new { id = item.IDCauHoi }))
+                foreach (var item in Model)
                 {
+                    i++;
+                    using (Html.BeginForm("DelQuestion", "Question", new { id = item.IDCauHoi }))
+                    {
 
-                    <tr>
+                        <tr>
 
-                        <td>@i</td>
-                        <td>
-                            <p>@item.CauHoi1</p>
-                            <a href="/ADmin/Question/ViewQuestion?id=@item.IDCauHoi" class="btn btn-success btn-xs"> Xem đáp án</a>
-                        </td>
+                            <td>@i</td>
+                            <td>
+                                <p>@item.CauHoi1</p>
+                                <a href="/ADmin/Question/ViewQuestion?id=@item.IDCauHoi" class="btn btn-success btn-xs"> Xem đáp án</a>
+                            </td>
 
-                        <td class="text-center">
-                            <a href="/ADmin/Question/EditQuestion?id=@item.IDCauHoi" class="btn btn-primary btn-xs"> Sửa</a>
-                            <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa tài khoản ?')" />
+                            <td class="text-center">
+                                <a href="/ADmin/Question/EditQuestion?id=@item.IDCauHoi" class="btn btn-primary btn-xs"> Sửa</a>
+                                <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa tài khoản ?')" />
 
-                        </td>
+                            </td>
 
-                    </tr>
+                        </tr>
+
+                    }
 
                 }
 
             }
 
-        }
-
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-</div>
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
 
 

@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="ID_Category" />
           </Key>
-          <Property Name="ID_Category" Type="int" Nullable="false" />
+          <Property Name="ID_Category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TênCategory" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_Admin" Type="int" />
         </EntityType>
@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="ID_BaiHoc" />
           </Key>
-          <Property Name="ID_BaiHoc" Type="int" Nullable="false" />
+          <Property Name="ID_BaiHoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenBaiHoc" Type="nvarchar(max)" />
           <Property Name="Link" Type="varchar(max)" />
           <Property Name="MoTa" Type="nvarchar(max)" />
@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="IDTaiLieu" />
           </Key>
-          <Property Name="IDTaiLieu" Type="int" Nullable="false" />
+          <Property Name="IDTaiLieu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTaiLieu" Type="nvarchar(max)" />
           <Property Name="DownLoad" Type="nvarchar(max)" />
           <Property Name="Image" Type="nvarchar(max)" />
@@ -139,7 +139,7 @@
           <Key>
             <PropertyRef Name="ID_Category" />
           </Key>
-          <Property Name="ID_Category" Type="Int32" Nullable="false" />
+          <Property Name="ID_Category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TênCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Admin" Type="Int32" />
           <NavigationProperty Name="Admin" Relationship="Self.FK_Category_Admin" FromRole="Category" ToRole="Admin" />
@@ -164,7 +164,7 @@
           <Key>
             <PropertyRef Name="ID_BaiHoc" />
           </Key>
-          <Property Name="ID_BaiHoc" Type="Int32" Nullable="false" />
+          <Property Name="ID_BaiHoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenBaiHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -187,7 +187,7 @@
           <Key>
             <PropertyRef Name="IDTaiLieu" />
           </Key>
-          <Property Name="IDTaiLieu" Type="Int32" Nullable="false" />
+          <Property Name="IDTaiLieu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenTaiLieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DownLoad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -228,7 +228,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBThiTrucTuyenEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBThiTrucTuyenEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="CauHois" EntityType="Self.CauHoi" />
@@ -253,7 +253,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBThiTrucTuyenModelStoreContainer" CdmEntityContainer="DBThiTrucTuyenEntities1">
+        <EntityContainerMapping StorageEntityContainer="DBThiTrucTuyenModelStoreContainer" CdmEntityContainer="DBThiTrucTuyenEntities">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="DBThiTrucTuyenModel.Admin">
               <MappingFragment StoreEntitySet="Admin">

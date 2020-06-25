@@ -1,13 +1,12 @@
-﻿@using WebsiteHocAVOnline.Models;
+﻿@using WebsiteHocAVOnline.Models
 @{
-    List<TaiKhoan> ListUer = ViewBag.ListUser;
+    List<TaiKhoan> ListUser = ViewBag.ListUser;
+
 }
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Website Học Anh Văn Online</title>
+    <title>Học Anh Văn Online</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -32,7 +31,7 @@
             <div class="col-md-8 order-md-last">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <a class="navbar-brand" href="index.html">Online <span>Test</span> <small>Website Học Anh Văn Online</small></a>
+                        <a class="navbar-brand" href="index.html">Publishing <span>Company</span> <small>Book Publishing Company</small></a>
                     </div>
                     <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
                         <form action="#" class="searchform order-lg-last">
@@ -64,13 +63,13 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav m-auto">
-                    <li class="nav-item active"><a href="@Url.Action("Index", "Home")" class="nav-link">Bài Giảng</a></li>
-                    <li class="nav-item"><a href="@Url.Action("ConfirmUser", "Quiz")" class="nav-link">Thi</a></li>
+                    <li class="nav-item active"><a href="@Url.Action("Index", "Home")" class="nav-link">Trang Chủ</a></li>
                     <li class="nav-item"><a href="@Url.Action("Index", "Document")" class="nav-link">Tài Liệu</a></li>
-                    <li class="nav-item"><a href="@Url.Action("Introduce", "Home")" class="nav-link">Giới Thiệu</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Quiz", "Quiz")" class="nav-link">Thi</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Introduce", "Home")" class="nav-link">Giới hiệu </a></li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0 mr-2">
-                    <span>Tài khoản: @(HttpContext.Current.Session["TAI KHOAN"] == null ? "" : ListUer.FirstOrDefault(m => m.IDTaiKhoan == Convert.ToInt32(HttpContext.Current.Session["TAI KHOAN"])).TenDangNhap)</span>
+                    <span>Tài khoản: @(HttpContext.Current.Session["TAI KHOAN"] == null ? "" : ListUser.SingleOrDefault(m => m.IDTaiKhoan == Convert.ToInt32(HttpContext.Current.Session["TAI KHOAN"])).TenDangNhap)</span>
                 </div>
 
                 <div class="form-inline my-2 my-lg-0">
@@ -80,6 +79,9 @@
         </div>
     </nav>
     <!-- END nav -->
+    @RenderSection("dataPage", false)
+    @RenderBody()
+
 
     <section class="hero-wrap" style="background-image: url('../../Assets/Client/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -87,17 +89,52 @@
             <div class="row no-gutters slider-text align-items-center">
                 <div class="col-md-8 ftco-animate d-flex align-items-end">
                     <div class="text w-100">
-                        <h1 class="mb-4">Luyện Thi Anh Văn</h1>
-                        <p class="mb-4">Học anh văn miễn phí cho mọi người.</p>
-
+                        <h1 class="mb-4">Good books don't give up all their secrets at once</h1>
+                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <p><a href="#" class="btn btn-primary py-3 px-4">View All Books</a> <a href="#" class="btn btn-white py-3 px-4">Explore Now</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    @RenderSection("dataPage", false)
-    @RenderBody()
+    <section class="ftco-section ftco-no-pt mt-5 mt-md-0">
+        <div class="container">
+            <div class="row">
+                <div class="tab w-100 mb-2">
+                    <ul>
+                        <li class="tablinks" id="defaultOpen">
+
+
+                            @Html.ActionLink("Ngữ pháp cơ bản", "DetailLearn", "Home", new { id = 1 }, null)
+
+                        </li>
+                        <li class="tablinks">
+                            @Html.ActionLink("Cách Làm Câu Từ Loại TOEIC", "DetailLearn", "Home", new { id = 2 }, null)
+
+                        </li>
+                        <li class="tablinks">
+                            @Html.ActionLink("Đề Thi Thật", "DetailLearn", "Home", new { id = 3 }, null)
+
+                        </li>
+                        <li class="tablinks">
+
+                            @Html.ActionLink("Economy 1 - Test 1 & 2", "DetailLearn", "Home", new { id = 4 }, null)
+
+                        </li>
+                        <li class="tablinks">
+                            @Html.ActionLink("Economy 3 - Test 1", "DetailLearn", "Home", new { id = 5 }, null)
+
+                        </li>
+                        <li class="tablinks">
+                            @Html.ActionLink("Thi thử", "ConfirmUser", "Quiz", new { id = 1 }, null)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <div class="bai-giang" id="baigiang">
         <div class="container">
@@ -140,6 +177,435 @@
 
     </div>
 
+    <section class="ftco-counter ftco-section ftco-no-pt ftco-no-pb img bg-light" id="section-counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                    <div class="block-18 py-4 mb-4">
+                        <div class="text align-items-center">
+                            <strong class="number" data-number="75678">0</strong>
+                            <span>Active Readers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                    <div class="block-18 py-4 mb-4">
+                        <div class="text align-items-center">
+                            <strong class="number" data-number="3040">0</strong>
+                            <span>Total Pages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                    <div class="block-18 py-4 mb-4">
+                        <div class="text align-items-center">
+                            <strong class="number" data-number="283">0</strong>
+                            <span>Cup Of Coffee</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                    <div class="block-18 py-4 mb-4">
+                        <div class="text align-items-center">
+                            <strong class="number" data-number="14500">0</strong>
+                            <span>Facebook Fans</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(../../Assets/Client/images/about-1.jpg);">
+                </div>
+                <div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
+                    <div class="heading-section">
+                        <span class="subheading">Welcome To Publishing Company</span>
+                        <h2 class="mb-4">Publishing Company Created By Authors</h2>
+
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
+
+                        <a href="#" class="btn btn-primary">View All Our Authors</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt">
+        <div class="container-fluid px-md-4">
+            <div class="row justify-content-center pb-5 mb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Books</span>
+                    <h2>New Release</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="book-wrap d-lg-flex">
+                        <div class="img d-flex justify-content-end" style="background-image: url(../../Assets/Client/images/book-1.jpg);">
+                            <div class="in-text">
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                    <span class="flaticon-shopping-cart"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                    <span class="flaticon-heart-1"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                    <span class="flaticon-search"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
+                                    <span class="flaticon-visibility"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text p-4">
+                            <p class="mb-2"><span class="price">$12.00</span></p>
+                            <h2><a href="#">You Are Your Only Limit</a></h2>
+                            <span class="position">By John Nathan Muller</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="book-wrap d-lg-flex">
+                        <div class="img d-flex justify-content-end" style="background-image: url(../../Assets/Client/images/book-2.jpg);">
+                            <div class="in-text">
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                    <span class="flaticon-shopping-cart"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                    <span class="flaticon-heart-1"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                    <span class="flaticon-search"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
+                                    <span class="flaticon-visibility"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text p-4">
+                            <p class="mb-2"><span class="price sale">$12.00</span> <span class="price">$8.00</span></p>
+                            <h2><a href="#">101 Essays That Will Change The Way Your Thinks</a></h2>
+                            <span class="position">By John Nathan Muller</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="book-wrap d-lg-flex">
+                        <div class="img d-flex justify-content-end" style="background-image: url(../../Assets/Client/images/book-3.jpg);">
+                            <div class="in-text">
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                    <span class="flaticon-shopping-cart"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                    <span class="flaticon-heart-1"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                    <span class="flaticon-search"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
+                                    <span class="flaticon-visibility"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text p-4">
+                            <p class="mb-2"><span class="price">$12.00</span></p>
+                            <h2><a href="#">Your Soul Is A River</a></h2>
+                            <span class="position">By John Nathan Muller</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="book-wrap d-lg-flex">
+                        <div class="img d-flex justify-content-end" style="background-image: url(../../Assets/Client/images/book-4.jpg);">
+                            <div class="in-text">
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                    <span class="flaticon-shopping-cart"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                    <span class="flaticon-heart-1"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                    <span class="flaticon-search"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
+                                    <span class="flaticon-visibility"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text p-4 order-md-first">
+                            <p class="mb-2"><span class="price">$9.00</span></p>
+                            <h2><a href="#">All The Letters I Should Have Sent</a></h2>
+                            <span class="position">By John Nathan Muller</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="book-wrap d-lg-flex">
+                        <div class="img d-flex justify-content-end" style="background-image: url(../../Assets/Client/images/book-5.jpg);">
+                            <div class="in-text">
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                    <span class="flaticon-shopping-cart"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                    <span class="flaticon-heart-1"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                    <span class="flaticon-search"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
+                                    <span class="flaticon-visibility"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text p-4 order-md-first">
+                            <p class="mb-2"><span class="price">$20.00</span></p>
+                            <h2><a href="#">Happy</a></h2>
+                            <span class="position">By John Nathan Muller</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="book-wrap d-lg-flex">
+                        <div class="img d-flex justify-content-end" style="background-image: url(../../Assets/Client/images/book-6.jpg);">
+                            <div class="in-text">
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                    <span class="flaticon-shopping-cart"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                    <span class="flaticon-heart-1"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Quick View">
+                                    <span class="flaticon-search"></span>
+                                </a>
+                                <a href="#" class="icon d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="left" title="Compare">
+                                    <span class="flaticon-visibility"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text p-4 order-md-first">
+                            <p class="mb-2"><span class="price">$12.00</span></p>
+                            <h2><a href="#">Milk &amp; Honey</a></h2>
+                            <span class="position">By John Nathan Muller</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section testimony-section ftco-no-pb">
+        <div class="img img-bg border" style="background-image: url(../../Assets/Client/images/bg_4.jpg);"></div>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                    <span class="subheading">Testimonial</span>
+                    <h2 class="mb-3">Kinds Words From Clients</h2>
+                </div>
+            </div>
+            <div class="row ftco-animate">
+                <div class="col-md-12">
+                    <div class="carousel-testimony owl-carousel ftco-owl">
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                                <div class="text">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(../../Assets/Client/images/person_1.jpg)"></div>
+                                        <div class="pl-3">
+                                            <p class="name">Roger Scott</p>
+                                            <span class="position">Marketing Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                                <div class="text">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(../../Assets/Client/images/person_2.jpg)"></div>
+                                        <div class="pl-3">
+                                            <p class="name">Roger Scott</p>
+                                            <span class="position">Marketing Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                                <div class="text">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(../../Assets/Client/images/person_3.jpg)"></div>
+                                        <div class="pl-3">
+                                            <p class="name">Roger Scott</p>
+                                            <span class="position">Marketing Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                                <div class="text">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(../../Assets/Client/images/person_1.jpg)"></div>
+                                        <div class="pl-3">
+                                            <p class="name">Roger Scott</p>
+                                            <span class="position">Marketing Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap py-4">
+                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                                <div class="text">
+                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="user-img" style="background-image: url(../../Assets/Client/images/person_2.jpg)"></div>
+                                        <div class="pl-3">
+                                            <p class="name">Roger Scott</p>
+                                            <span class="position">Marketing Manager</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <span class="subheading">Price &amp; Plans</span>
+            <h2>Affordable Packages</h2>
+          </div>
+        </div>
+            <div class="row">
+                <div class="col-md-4 ftco-animate d-flex">
+              <div class="block-7 w-100">
+                <div class="text-center">
+                    <span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mo</sub></span>
+                    <span class="excerpt d-block">For Adults</span>
+                    <ul class="pricing-text mb-5">
+                      <li><span class="fa fa-check mr-2"></span>Individual Counseling</li>
+                      <li><span class="fa fa-check mr-2"></span>Couples Therapy</li>
+                      <li><span class="fa fa-check mr-2"></span>Family Therapy</li>
+                    </ul>
+
+                    <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 ftco-animate d-flex">
+              <div class="block-7 w-100">
+                <div class="text-center">
+                    <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mo</sub></span>
+                    <span class="excerpt d-block">For Children</span>
+                    <ul class="pricing-text mb-5">
+                      <li><span class="fa fa-check mr-2"></span>Counseling for Children</li>
+                      <li><span class="fa fa-check mr-2"></span>Behavioral Management</li>
+                      <li><span class="fa fa-check mr-2"></span>Educational Counseling</li>
+                    </ul>
+
+                    <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 ftco-animate d-flex">
+              <div class="block-7 w-100">
+                <div class="text-center">
+                    <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mo</sub></span>
+                    <span class="excerpt d-block">For Business</span>
+                    <ul class="pricing-text mb-5">
+                      <li><span class="fa fa-check mr-2"></span>Consultancy Services</li>
+                      <li><span class="fa fa-check mr-2"></span>Employee Counseling</li>
+                      <li><span class="fa fa-check mr-2"></span>Psychological Assessment</li>
+                    </ul>
+
+                    <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section> -->
+    <!-- <section class="ftco-appointment ftco-section img" style="background-image: url(images/bg_2.jpg);">
+            <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 half ftco-animate">
+                    <h2 class="mb-4">Send a Message &amp; Get in touch!</h2>
+                    <form action="#" class="appointment">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                    <div class="form-field">
+                                <div class="select-wrap">
+                          <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                          <select name="" id="" class="form-control">
+                            <option value="">Services</option>
+                            <option value="">Relation Problem</option>
+                            <option value="">Couple Counseling</option>
+                            <option value="">Depression Treatment</option>
+                            <option value="">Family Problem</option>
+                            <option value="">Personal Problem</option>
+                            <option value="">Business Problem</option>
+                          </select>
+                        </div>
+                          </div>
+                                </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                          <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                        </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                          <input type="submit" value="Send message" class="btn btn-primary py-3 px-4">
+                        </div>
+                                </div>
+                        </div>
+              </form>
+                </div>
+            </div>
+        </div>
+    </section> -->
 
     <section class="ftco-section">
         <div class="container">

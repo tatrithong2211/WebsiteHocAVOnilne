@@ -9,7 +9,6 @@ using WebsiteHocAVOnline.Models;
 using WebsiteHocAVOnline.Common;
 using System.Configuration;
 using System.Web.Security;
-
 namespace WebsiteHocAVOnline.Controllers
 {
     public class AccountController : Controller

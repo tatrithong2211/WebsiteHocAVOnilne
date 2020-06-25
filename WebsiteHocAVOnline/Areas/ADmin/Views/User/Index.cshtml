@@ -2,70 +2,69 @@
 @model List<TaiKhoan>
 
 @{
-    ViewBag.Title = "Index";
+
     Layout = "~/Areas/ADmin/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Danh Sách Thành Viên</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+    <div class="container-fluid">
+        <h1 class="mt-4">Bảng</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Danh Sách Bài Học</li>
+        </ol>
 
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Mã số</th>
-                                    <th>Họ và tên</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Tên tài khoản</th>
-                                    <th>Mật khẩu</th>
-                                    <th class="text-center">Quản lý</th>
-                                </tr>
+        <a class="btn btn-success mb-4" href="@Url.Action("AddUser", "User")">Thêm</a>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
 
-                            </thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã số</th>
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Tên tài khoản</th>
+                    <th>Mật khẩu</th>
+                    <th class="text-center">Quản lý</th>
+                </tr>
 
-                            @{
-                                int i = 0;
+            </thead>
 
-                                foreach (var item in Model)
-                                {
-                                    i++;
-                                    using (Html.BeginForm("DelAccount", "System", new { id = item.IDTaiKhoan }))
-                                    {
+            @{
+                int i = 0;
 
-                                                        <tr>
+                foreach (var item in Model)
+                {
+                    i++;
+                    using (Html.BeginForm("DelUser", "User", new { id = item.IDTaiKhoan }))
+                    {
 
-                                                            <td>@i</td>
-                                                            <td>@item.IDTaiKhoan</td>
-                                                            <td>@item.Hoten</td>
-                                                            <td>@item.DiaChi</td>
-                                                            <td>@item.TenDangNhap</td>
+                        <tr>
 
-                                                            <td>******</td>
-                                                            <td class="text-center">
+                            <td>@i</td>
+                            <td>@item.IDTaiKhoan</td>
+                            <td>@item.Hoten</td>
+                            <td>@item.Email</td>
+                            <td>@item.TenDangNhap</td>
+                            <td>@item.MatKhau</td>
+                            <td class="text-center">
 
-                                                                <a href="/ADmin/System/EditAccount?id=@item.IDTaiKhoan" class="btn btn-danger btn-xs"> Sửa</a>
-                                                                |
-                                                                <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa tài khoản: @item.TenDangNhap ?')" />
+                                <a href="/ADmin/User/EditUser?id=@item.IDTaiKhoan" class="btn btn-danger btn-xs"> Sửa</a>
+                                |
+                                <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa tài khoản: @item.Hoten ?')" />
 
-                                                            </td>
+                            </td>
 
-                                                        </tr>
+                        </tr>
 
-                                    }
+                    }
 
-                                }
+                }
 
-                            }
+            }
 
-                        </table>
+        </table>
 
-                    </div>
+    </div>
 
 
                 </div>

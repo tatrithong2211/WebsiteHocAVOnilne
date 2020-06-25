@@ -191,6 +191,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\ADmin\ADminAreaRegistration.cs" />
+    <Compile Include="Areas\ADmin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\ADmin\Controllers\DocumentController.cs" />
     <Compile Include="Areas\ADmin\Controllers\HomeController.cs" />
     <Compile Include="Areas\ADmin\Controllers\LearnController.cs" />
@@ -1916,6 +1917,9 @@
     <Content Include="Assets\Client\js\owl.carousel.min.js" />
     <Content Include="Assets\Client\js\popper.min.js" />
     <Content Include="Assets\Client\js\scrollax.min.js" />
+    <Content Include="Assets\Dcimg\img\image1.jpg" />
+    <Content Include="Assets\Dcimg\img\Ngu-phap-va-giai-thich-ngu-phap-tieng-anh-co-ban-va-nang-cao-tap-2-500x554.jpg" />
+    <Content Include="Assets\Dcimg\img\Spart-LCRC.jpg" />
     <Content Include="Assets\Login\css\sb-admin-2.css" />
     <Content Include="Assets\Login\css\sb-admin-2.min.css" />
     <Content Include="Assets\Login\img\undraw_posting_photo.svg" />
@@ -3541,7 +3545,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\ADmin\Views\web.config" />
-    <Content Include="Areas\ADmin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ADmin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\ADmin\Views\Home\Index.cshtml" />
     <Content Include="Assets\ADmin\scss\navs\_global.scss" />
@@ -3895,13 +3898,6 @@
     <Content Include="Assets\Login\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\Login\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\Login\vendor\jquery\jquery.slim.min.map" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\Client\css\.DS_Store" />
     <Content Include="Assets\Client\css\bootstrap\.DS_Store" />
     <Content Include="Assets\Client\css\css\.DS_Store" />
@@ -4004,6 +4000,21 @@
     <Content Include="Assets\Client\scss\bootstrap\_utilities.scss" />
     <Content Include="Assets\Client\scss\bootstrap\_variables.scss" />
     <Content Include="Assets\Client\scss\style.scss" />
+    <Content Include="Areas\ADmin\Views\Document\EditDocument.cshtml" />
+    <Content Include="Areas\ADmin\Views\Category\CategoryIndex.cshtml" />
+    <Content Include="Areas\ADmin\Views\Category\AddCategory.cshtml" />
+    <Content Include="Areas\ADmin\Views\Category\EditCategory.cshtml" />
+    <Content Include="Areas\ADmin\Views\User\EditUser.cshtml" />
+    <Content Include="Areas\ADmin\Views\System\DelAccount.cshtml" />
+    <Content Include="Areas\ADmin\Views\User\DelUser.cshtml" />
+    <Content Include="Areas\ADmin\Views\Category\DelCategory.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4043,7 +4054,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ADmin\Data\" />
-    <Folder Include="Assets\Dcimg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

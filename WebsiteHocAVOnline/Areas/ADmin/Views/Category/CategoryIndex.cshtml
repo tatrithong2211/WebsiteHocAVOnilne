@@ -1,0 +1,58 @@
+﻿@using WebsiteHocAVOnline.Models;
+@model List<Category>
+@{
+    ViewBag.Title = "CategoryIndex";
+    Layout = "~/Areas/ADmin/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Bảng</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Danh Sách chi tiết Bài Học</li>
+        </ol>
+
+        <a class="btn btn-success mb-4" href="@Url.Action("AddCategory", "Category")">Thêm</a>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Bài Học</th>
+                    <th>Tên Bài Học</th>
+                    <th class="text-center">Quản lý</th>
+                </tr>
+
+            </thead>
+
+            <div style="overflow:auto;">
+                @{ int i = 0;
+
+                    foreach (var item in Model)
+                    {
+                        i++;
+                        
+                        {
+
+                            <tr>
+
+                                <td>@i</td>
+                                <td>@item.ID_Category</td>
+                                <td>@item.TênCategory</td>
+
+                                <td class="text-center">
+
+                                    <a href="/ADmin/Category/EditCategory?id=@item.ID_Category" class="btn btn-danger btn-xs"> Sửa</a>
+
+                                    <a href="/ADmin/Category/DelCategory?id=@item.ID_Category" class="btn btn-danger btn-xs"> Xóa</a>
+                                </td>
+
+                            </tr> }
+
+                    } }
+
+        </table>
+
+    </div>
+
+

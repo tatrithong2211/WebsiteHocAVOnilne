@@ -5,13 +5,16 @@
     Layout = "~/Areas/ADmin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
+<div class="container-fluid">
+    <h1 class="mt-4">Bảng</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Danh Sách Tài Liệu</li>
+    </ol>
 
-    <h4 class="m-0 font-weight-bold text-primary">Danh Sách Tài Liệu</h4>
-
+    <a class="btn btn-success mb-4" href="@Url.Action("AddDoc", "Document")">Thêm</a>
     <table class="table table-bordered">
-        <a href="/Admin/Document/AddDoc" class="btn btn-danger btn-xs pull-right"><b>+</b> Thêm mới</a>
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>STT</th>
                 <th>Tài Liệu</th>
@@ -39,8 +42,8 @@
                         </td>
                         <td><img src="~/Assets/Dcimg/img/@item.Image" width="40px" height="60px" /></td>
                         <td class="text-center">
-                            <a href="/ADmin//?id=@item.IDTaiLieu" class="btn btn-primary btn-xs"> Sửa</a>
-                            <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa tài khoản ?')" />
+                            <a href="/ADmin/Document/EditDocument?id=@item.IDTaiLieu" class="btn btn-outline-success"> Sửa</a>
+                            <input type="submit" value="Xóa" class="btn btn-outline-success" onclick="return confirm('Bạn có muốn xóa tài khoản ?')" />
 
                         </td>
 

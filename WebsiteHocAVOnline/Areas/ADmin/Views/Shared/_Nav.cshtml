@@ -31,7 +31,6 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Quản Lý TK QTV</h6>
                     <a class="collapse-item" href="@Url.Action("Index", "System")">Thông Tin Tài Khoản</a>
                 </div>
         </li>
@@ -44,7 +43,6 @@
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Quản Lý Người Dùng</h6>
                     <a class="collapse-item" href="@Url.Action("Index", "User")">Danh Sách Người Dùng</a>
                 </div>
             </div>
@@ -60,20 +58,19 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Quản Lý Bài Học</h6>
-                    <a class="collapse-item" href="@Url.Action("Index", "Learn")">Chi Tiết Bài Học</a>
+                    <a class="collapse-item" href="@Url.Action("Index", "Learn")">Quản Lý Bài Học</a>
+                    <a class="collapse-item" href="@Url.Action("CategoryIndex", "Category")">Chi Tiết Bài Học</a>
                 </div>
             </div>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="true" aria-controls="collapseLayouts">
                 <i class="fa fa-cogs"></i>
                 <span>Câu Hỏi</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Quản Lý Câu Hỏi</h6>
                     <a class="collapse-item" href="@Url.Action("Index", "Question")">Chi Tiết Câu Hỏi</a>
                 </div>
             </div>
@@ -81,14 +78,15 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="true" aria-controls="pagesCollapseAuth">
                 <i class="fa fa-cogs"></i>
                 <span>Tài Liệu</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="pagesCollapseAuth" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Quản Lý Tài Liệu</h6>
-                    <a class="collapse-item" href="@Url.Action("Index", "Document")">Chi Tiết Tài Liệu</a>
+
+                    <a class="collapse-item" href="@Url.Action("Index", "Document")">Quản Lý Tài Liệu</a>
+                   
                 </div>
             </div>
         </li>

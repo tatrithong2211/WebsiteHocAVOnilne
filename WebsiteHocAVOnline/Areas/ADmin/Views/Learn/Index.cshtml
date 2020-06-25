@@ -5,13 +5,16 @@
     Layout = "~/Areas/ADmin/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="row">
+    <div class="container-fluid">
+        <h1 class="mt-4">Bảng</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Danh Sách Bài Học</li>
+        </ol>
 
-        <h4 class="m-0 font-weight-bold text-primary">Danh Sách Bài Học</h4>
-
+        <a class="btn btn-success mb-4" href="@Url.Action("AddLearn", "Learn")">Thêm</a>
         <table class="table table-bordered">
-            <a href="/ADmin/Learn/AddLearn" class="btn btn-danger btn-xs pull-right"><b>+</b> Thêm mới</a>
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>STT</th>
                     <th>Tên bài học</th>
@@ -20,35 +23,35 @@
 
             </thead>
 
- @{
-            int i = 0;
+            @{
+                int i = 0;
 
-            foreach (var item in Model)
-            {
-                i++;
-                using (Html.BeginForm("DelLearn", "Learn", new { id = item.ID_BaiHoc}))
+                foreach (var item in Model)
                 {
+                    i++;
+                    using (Html.BeginForm("DelLearn", "Learn", new { id = item.ID_BaiHoc }))
+                    {
 
-                    <tr>
+                        <tr>
 
-                        <td>@i</td>
+                            <td>@i</td>
 
-                        <td>@item.TenBaiHoc</td>
+                            <td>@item.TenBaiHoc</td>
 
-                        <td class="text-center">
-                            <a href="/ADmin/Learn/EditLearn?id=@item.ID_BaiHoc" class="btn btn-primary btn-xs"> Sửa</a>
-                            <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa ?')" />
+                            <td class="text-center">
+                                <a href="/ADmin/Learn/EditLearn?id=@item.ID_BaiHoc" class="btn btn-danger btn-xs"> Sửa</a>
+                                <input type="submit" value="Xóa" class="btn btn-danger btn-xs" onclick="return confirm('Bạn có muốn xóa ?')" />
 
-                        </td>
+                            </td>
 
-                    </tr>
+                        </tr>
+
+                    }
 
                 }
 
             }
 
-        }
-
-    </table>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-</div>
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
