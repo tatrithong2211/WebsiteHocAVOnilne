@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTK" Type="nvarchar" MaxLength="50" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -25,7 +25,7 @@
           <Key>
             <PropertyRef Name="IDCauHoi" />
           </Key>
-          <Property Name="IDCauHoi" Type="int" Nullable="false" />
+          <Property Name="IDCauHoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CauHoi" Type="nvarchar(max)" />
           <Property Name="A" Type="nvarchar" MaxLength="50" />
           <Property Name="B" Type="nvarchar" MaxLength="50" />
@@ -130,7 +130,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenTK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Admin" FromRole="Admin" ToRole="Category" />
@@ -150,7 +150,7 @@
           <Key>
             <PropertyRef Name="IDCauHoi" />
           </Key>
-          <Property Name="IDCauHoi" Type="Int32" Nullable="false" />
+          <Property Name="IDCauHoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CauHoi1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="A" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="B" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

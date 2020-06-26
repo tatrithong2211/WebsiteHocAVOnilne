@@ -6,22 +6,6 @@
 }
 
 
-<style>
-
-    .bai-giang {
-        display: none;
-    }
-
-    .banner {
-        display: none;
-    }
-
-    .question-list {
-        height: 463px;
-    }
-</style>
-
-
 
 <div class="test-page">
 
@@ -50,21 +34,38 @@
 
                                     <ul class="answer-list">
 
-                                        <li>
-                                            <b> @Html.RadioButtonFor(x => x.A, new { @class = "form-control" }) A: &nbsp;@Model.A</b>
-                                        </li>
+                                        @if (!string.IsNullOrEmpty(Model.A))
+                                        {
+                                            <li  style="list-style:none">
+                                                <b> @Html.RadioButtonFor(x => x.A, new { @class = "form-control" }) A: &nbsp;@Model.A</b>
+                                            </li>
+                                        }
+                                        @if (!string.IsNullOrEmpty(Model.B))
+                                        {
+                                            <li  style="list-style:none">
+                                                <b> @Html.RadioButtonFor(x => x.B, new { @class = "form-control" }) B: &nbsp;@Model.B</b>
+                                            </li>
+                                        }
 
-                                        <li>
-                                            <b> @Html.RadioButtonFor(x => x.B, new { @class = "form-control" }) B: &nbsp; @Model.B</b>
-                                        </li>
+                                        @if (!string.IsNullOrEmpty(Model.C))
+                                        {
+                                            <li  style="list-style:none">
+                                                <b> @Html.RadioButtonFor(x => x.C, new { @class = "form-control" }) C: &nbsp;@Model.C</b>
+                                            </li>
+                                        }
 
-                                        <li>
-                                            <b> @Html.RadioButtonFor(x => x.C, new { @class = "form-control" }) C: &nbsp; @Model.C</b>
-                                        </li>
+                                        @if (!string.IsNullOrEmpty(Model.D))
+                                        {
+                                            <li style="list-style:none">
+                                                <b> @Html.RadioButtonFor(x => x.D, new { @class = "form-control" }) D: &nbsp;@Model.D</b>
+                                            </li>
+                                        }
 
-                                        <li>
-                                            <b> @Html.RadioButtonFor(x => x.D, new { @class = "form-control" }) D: &nbsp; @Model.D</b>
-                                        </li>
+
+
+
+
+                                      
 
                                     </ul>
 

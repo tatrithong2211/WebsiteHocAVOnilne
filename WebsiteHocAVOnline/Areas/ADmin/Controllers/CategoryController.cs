@@ -34,7 +34,7 @@ namespace WebsiteHocAVOnline.Areas.ADmin.Controllers
 
             List<Category> list = db.Categories.OrderByDescending(model => model.ID_Category).ToList();
 
-            Category catVar = new Category(); // Category Variable
+            Category catVar = new Category(); 
 
             catVar.TênCategory = catGet.TênCategory;
 

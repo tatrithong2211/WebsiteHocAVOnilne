@@ -120,18 +120,18 @@ namespace WebsiteHocAVOnline.Controllers
 
             var accessToken = result.access_token;
 
-            // Store the access token in the session
+            // Lưu trữ mã thông báo truy cập trong session
             Session["AccessToken"] = accessToken;
 
-            // update the facebook client with the access token so 
-            // we can make requests on behalf of the user
+            // cập nhật ứng dụng khách facebook với mã thông báo truy cập
+            // ực hiện các yêu cầu thay mặt cho người dùng
             fb.AccessToken = accessToken;
 
-            // Get the user's information
+            // Nhận thông tin của người dùng
             dynamic me = fb.Get("me?fields=first_name,last_name,id,email");
             string email = me.email;
 
-            // Set the auth cookie
+            // Đặt cookie xác thực
             FormsAuthentication.SetAuthCookie(email, false);
 
             return RedirectToAction("Index", "Home");

@@ -24,8 +24,8 @@ namespace WebsiteHocAVOnline.Areas.ADmin.Controllers
 
             return View(model);
         }
-        
-          public ActionResult ViewQuestion(int id)
+
+        public ActionResult ViewQuestion(int id)
         {
             if (Session["ADMIN"] == null)
             {
